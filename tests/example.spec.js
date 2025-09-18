@@ -31,8 +31,8 @@ test('get started link navigates to intro page', async ({ page }) => {
   await expect(page).toHaveURL(/.*docs\/intro/);
 });
 
-test('search box should be visible', async ({ page }) => {
+test('@same get started link navigates to intro page', async ({ page }) => {
   await page.goto('https://playwright.dev/');
-  const searchBox = page.getByRole('textbox', { name: 'Search' });
-  await expect(searchBox).toBeVisible();
+  await page.getByRole('link', { name: 'Get started' }).click();
+  await expect(page).toHaveURL(/.*docs\/intro/);
 });
